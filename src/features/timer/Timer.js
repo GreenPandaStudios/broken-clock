@@ -36,13 +36,24 @@ export function Timer(){
         date.setSeconds(date.getSeconds() + (offset * 1.2) % 60);
         date.setMonth(date.getMonth() + (offset * 5.6) % 12);
         date.setFullYear(date.getFullYear() + (offset * 5.6) % 100);
+        var options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
 
-
-        return date.toLocaleString();
+        return (
+            <div class = "container">
+                <div class= "row mt-4"/>
+                <div class= "row mt-4"/>
+                <div class= "row mt-4"/>
+                <div class = "row text-center w-100 display-1">
+                    {date.toLocaleTimeString()} 
+                </div>
+                  <div class = "row text-center w-100 display-6">
+                    {date.toLocaleDateString("en-US", options)}
+                </div>
+                <div class= "row mt-4"/>
+            </div>
+        )
     }
     
 
-    return (<div>
-      {getDateString()}
-    </div>);
+    return getDateString();
 }
