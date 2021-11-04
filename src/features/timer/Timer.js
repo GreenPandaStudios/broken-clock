@@ -20,7 +20,7 @@ export function Timer(){
             setOffset(0);
         }
         else{
-            setOffset(Math.random() * 9999999);
+            setOffset(Math.random() * 9999999 - Math.random() * 9999999);
         }
         
     }, []);
