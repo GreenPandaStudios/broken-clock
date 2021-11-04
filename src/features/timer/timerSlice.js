@@ -26,7 +26,7 @@ export const timerSlice = createSlice({
   reducers: {
     setOffset: (state, action) => {
 
-      state.timeOffset = action.payload.timeOffset;
+      state.timeOffset = action.payload;
     },
   }
 });
@@ -37,8 +37,4 @@ export const { setOffset} = timerSlice.actions;
 // the state. Selectors can also be defined inline where they're used instead of
 // in the slice file. For example: `useSelector((state: RootState) => state.counter.value)`
 export const selectOffset = (state) => state.timer.timeOffset;
-export const selectTime = (state)=> {
-
-  return new Date(new Date().getTime() + 1);
-}
 export default timerSlice.reducer;

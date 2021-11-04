@@ -5,8 +5,8 @@ import ReactDOM from 'react-dom';
 export function Timer(){
 
     const dispatch = useDispatch();
-    const [offset, setOffset] = useState(0);
-    
+    //const [offset, setLocalOffset] = useState(0);
+    const offset = useSelector(selectOffset);
 
     const [state, setState] = useState(0);
 
@@ -17,10 +17,12 @@ export function Timer(){
     });
     useEffect(()=>{
         if (Math.random() > 0.5){
-            setOffset(0);
+           // setLocalOffset(0);
+            dispatch(setOffset(0));
         }
         else{
-            setOffset(Math.random() * 9999999 - Math.random() * 9999999);
+            //setLocalOffset(Math.random() * 9999999 - Math.random() * 9999999);
+            dispatch(setOffset(Math.random() * 9999999 - Math.random() * 9999999));
         }
         
     }, []);
@@ -32,6 +34,7 @@ export function Timer(){
         
 
         let date  = new Date();
+        date.setHours(date.getHours() + (offset*.613) % 24);
         date.setMinutes(date.getMinutes() + offset % 60);
         date.setSeconds(date.getSeconds() + (offset * 1.2) % 60);
         date.setMonth(date.getMonth() + (offset * 5.6) % 12);

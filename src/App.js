@@ -13,12 +13,7 @@ function App() {
       <div class = "row">
         <Timer/>
       </div>
-       <div class = "row display-6">
-        We're All Broken Clocks
-      </div>
-      <div class = "row">
-        <Quotes/>
-      </div>
+      <Quotes/>
     </div>
   );
 }

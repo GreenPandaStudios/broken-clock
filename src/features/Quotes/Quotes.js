@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { selectOffset } from "../timer/timerSlice";
 
 export function Quotes() {
-   
-
+   const offset = useSelector(selectOffset);
+    
 
     const quotes = [
         "Even a broken clock is right twice a day. Except this one.",
@@ -37,10 +39,25 @@ export function Quotes() {
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
-    return(
+
+
+    if (offset == 0){
+        //the clock is not broken
+        return(<></>);
+    }
+    else{
+        return(
         <>
-            {quote}
+            <div class = "row display-6">
+                We're All Broken Clocks
+            </div>
+            <div class = "row">
+                {quote}
+            </div>
         </>
-    )
+        )
+    }
+
+   
 
 }
